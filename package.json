@@ -8,15 +8,31 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "dependencies": {
+    "@stripe/stripe-js": "^1.54.1",
     "bcryptjs": "^2.4.3",
+    "dgram": "^1.0.1",
+    "dns": "^0.2.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
+    "fs": "^0.0.1-security",
+    "lottie-web": "^5.12.2",
+    "mailgun-js": "^0.22.0",
     "mongoose": "6.11.1",
+    "net": "^1.0.2",
     "next": "13.4.3",
     "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "swr": "^2.1.5"
+    "react-loading-skeleton": "^3.3.1",
+    "stripe": "^12.10.0",
+    "swr": "^2.1.5",
+    "tls": "^0.0.1",
+    "zustand": "^4.3.8"
   }
 }

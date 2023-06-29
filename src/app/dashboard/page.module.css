@@ -1,58 +1,77 @@
 .container {
   display: flex;
-  gap: 100px;
-}
-
-.posts {
-  flex: 1;
-}
-
-.post {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 50px 0px;
-}
-
-.imgContainer {
-  width: 200px;
-  height: 100px;
-  position: Ū;
-}
-
-.img {
-  object-fit: cover;
-}
-
-.delete {
-  cursor: pointer;
-  color: red;
-}
-
-.new {
-  flex: 1;
-  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
-.input,
-.textArea {
-  padding: 10px;
-  background-color: transparent;
-  border: 2px solid #bbb;
-  border-radius: 3px;
-  color: #bbb;
-  font-size: 20px;
+.loadingContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.seebutton {
+  padding: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 1px;
+  width: 200px;
+  font-size: 16px;
   font-weight: bold;
+  text-align: center;
+  color: white;
 }
 
 .button {
-  padding: 20px;
+  background-color: #f5f5f5;
+  padding: 14px;
   cursor: pointer;
-  background-color: #53c28b;
   border: none;
-  border-radius: 5px;
-  color: #eee;
+  border-radius: 2px;
+  width: 200px;
+  font-size: 16px;
   font-weight: bold;
+  text-align: center;
+  color: black;
+  border-right: 4px solid black;
+  border-bottom: 5px solid ;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  transition: transform 0.3s ease;
+}
+
+.seebutton {
+  background-color: black;
+  transition: transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: #f4faf5;
+  transform: translateY(-2px);
+}
+
+.seebutton:hover {
+  background-color: #232323;
+  transform: translateY(-2px);
+}
+
+.clicked {
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }

@@ -1,9 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
-import Button from "@/components/Button/Button";
-import Image from "next/image";
 import { items } from "./data.js";
-import { notFound } from "next/navigation";
 
 const getData = (cat) => {
   const data = items[cat];
@@ -12,7 +9,7 @@ const getData = (cat) => {
     return data;
   }
 
-  return notFound();
+  return [];
 };
 
 const Category = ({ params }) => {
@@ -21,23 +18,19 @@ const Category = ({ params }) => {
     <div className={styles.container}>
       <h1 className={styles.catTitle}>{params.category}</h1>
 
-      {data.map((item) => (
-        <div className={styles.item} key={item.id}>
-          <div className={styles.content}>
-            <h1 className={styles.title}>{item.title}</h1>
-            <p className={styles.desc}>{item.desc}</p>
-            <Button text="See More" url="#" />
+      <div className={styles.grid}>
+        {data.map((item) => (
+          <div className={styles.item} key={item.id}>
+            <img className={styles.image} src={item.image} alt="" />
+            <div className={styles.overlay}>
+              <div className={styles.content}>
+                <h2 className={styles.title}>{item.title}</h2>
+                <p className={styles.desc}>{item.desc}</p>
+              </div>
+            </div>
           </div>
-          <div className={styles.imgContainer}>
-            <Image
-              className={styles.img}
-              fill={true}
-              src={item.image}
-              alt=""
-            />
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

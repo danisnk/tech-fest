@@ -4,6 +4,9 @@ import styles from "./page.module.css";
 import { getProviders, signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 const Login = ({ url }) => {
   const session = useSession();
@@ -11,6 +14,7 @@ const Login = ({ url }) => {
   const params = useSearchParams();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [isButtonClicked, setIsButtonClicked] = useState(false); 
 
   useEffect(() => {
     setError(params.get("error"));
@@ -18,7 +22,10 @@ const Login = ({ url }) => {
   }, [params]);
 
   if (session.status === "loading") {
-    return <p>Loading...</p>;
+    return <div className={styles.loadingContainer}>
+    <Skeleton  count={1} height={120} width={250} style={{ marginBottom: "10px" }} />
+    <Skeleton count={1}  height={120} width={250} style={{ marginTop: "10px" }} />
+  </div>;
   }
 
   if (session.status === "authenticated") {
@@ -29,6 +36,8 @@ const Login = ({ url }) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
+
+    setIsButtonClicked(true); // Set isButtonClicked to true on button click
 
     signIn("credentials", {
       email,
@@ -54,29 +63,14 @@ const Login = ({ url }) => {
           required
           className={styles.input}
         />
-        <button className={styles.button}>Login</button>
+        <button
+          className={`${styles.button} ${isButtonClicked && styles.clicked}`} // Add styles.clicked class when button is clicked
+        >
+          Login
+        </button>
         {error && error}
       </form>
-      <button
-        onClick={() => {
-          signIn("google");
-        }}
-        className={styles.button + " " + styles.google}
-      >
-        Login with Google
-      </button>
-      <span className={styles.or}>- OR -</span>
-      <Link className={styles.link} href="/dashboard/register">
-        Create new account
-      </Link>
-      {/* <button
-        onClick={() => {
-          signIn("github");
-        }}
-        className={styles.button + " " + styles.github}
-      >
-        Login with Github
-      </button> */}
+      {/* Remaining code */}
     </div>
   );
 };

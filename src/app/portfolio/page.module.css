@@ -1,8 +1,24 @@
+
+
+.item:nth-child(1) {
+  background: url("/proshows.jpg");
+}
+.item:nth-child(2) {
+  background: url("/websites.jpg");
+}
+.item:nth-child(3) {
+  background: url("/competition.jpg");
+}
+
+
+
+
 .mainTitle {
-  font-size: 100px;
+  font-size: 48px;
 }
 
 .container {
+  padding: 20px;
 }
 
 .selectTitle {
@@ -21,16 +37,7 @@
   height: 400px;
   position: relative;
   background-size: cover !important;
-}
-
-.item:nth-child(1) {
-  background: url("/illustration.png");
-}
-.item:nth-child(2) {
-  background: url("/websites.jpg");
-}
-.item:nth-child(3) {
-  background: url("/apps.jpg");
+  transition: transform 0.3s ease;
 }
 
 .title {
@@ -43,4 +50,41 @@
 
 .item:hover .title {
   color: #53c28b;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item {
+    width: 200px;
+    height: 300px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+    text-align: center;
+    position: static;
+    margin-top: 10px;
+  }
+
+  .selectTitle {
+    margin: 20px 0px;
+    font-size: 22px;
+  }
 }
